@@ -17,7 +17,7 @@ namespace AnagramSort
         {
             string[] input = {"abc", "ant", "cab", "dog", "god", "man", "tan"};
 
-            CustomSortString(input);
+            CustomSortString2(input);
         }
 
         static void CustomSortString(string[] input)
@@ -56,6 +56,30 @@ namespace AnagramSort
                     Console.Write(str + " ");
                 }
             }
+        }
+
+        static void CustomSortString2(string[] input)
+        {
+            Array.Sort(input, CompareAnagrams);
+
+            foreach (string str in input)
+            {
+                Console.Write(str + " ");
+            }
+        }
+
+        static int CompareAnagrams(string s1, string s2)
+        {
+            char[] s1Array = s1.ToArray();
+            char[] s2Array = s2.ToArray();
+
+            Array.Sort(s1Array);
+            Array.Sort(s2Array);
+
+            string sortedString1 = new string(s1Array);
+            string sortedString2 = new string(s2Array);
+
+            return sortedString1.CompareTo(sortedString2);
         }
     }
 }
